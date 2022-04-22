@@ -4,9 +4,11 @@ import com.challenge.users.adapter.MessageAdapter;
 import com.challenge.users.dto.MessageDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/wpp-group")
+@RestController
+@RequestMapping("/wpp-group/send")
 public class UserController {
 
     private final MessageAdapter messageAdapter;
@@ -15,7 +17,7 @@ public class UserController {
         this.messageAdapter = messageAdapter;
     }
 
-    @PostMapping(value = "/send")
+    @PostMapping
     public void send(@RequestBody MessageDTO msj) {
         this.messageAdapter.toDomain(msj);
     }
